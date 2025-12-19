@@ -2,10 +2,8 @@ import pickle
 import numpy as np
 import pandas as pd
 import geopandas as gpd
-from pathlib import Path
-import matplotlib
-matplotlib.use("TkAgg") # Graphics error so use this here is spyder to ploy
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 ####### OPENING PATH AND READING FILES: #######
 DATA_PATH = Path.cwd() / "Data" # [20] A general path to use for all devices, and to not encounter problems.
@@ -38,6 +36,14 @@ birth_years = ds_le["birth_year"].values
 
 
 ####### ALL FUNCTIONS FOR THE OUTPUTS, TASK 3-6-8-9-10-11 #######
+
+'''TASK 3: This function visualizes how the fraction of a country’s land area exposed to heatwaves 
+evolves over time under different climate scenarios. It extracts country specific data 
+from the land fraction exposure dataset and plots annual mean exposure together with its 
+variability for the 1.5 °C, 2 °C, and NDC scenarios. Shaded bands around the mean represent 
+uncertainty, allowing comparison of both trends and variability between scenarios. 
+The function is used to highlight the differences in heatwave exposure across countries.'''
+
 def plot_annual_land_fraction(ds, country): # Function with dataset ds, and country to be called.
     ds_c = ds.sel(country=country) # [3] Sel for selecting by label, not by index (e.g Belgium not 2).
     plt.figure(figsize=(8,5))
@@ -55,7 +61,13 @@ def plot_annual_land_fraction(ds, country): # Function with dataset ds, and coun
     plt.grid(alpha=0.3)
     plt.show()
 
-    
+'''TASK 6: This function plots lifetime heatwave exposure as a function of birth year 
+for a selected country. For each climate scenario, it shows the mean lifetime
+number of heatwaves experienced by individuals born in different years, 
+together with uncertainty ranges. By using birth year instead of calendar year, 
+the function shows how future generations are projected to experience 
+higher cumulative heatwave exposure under more severe emission.'''
+  
 def plot_lifetime_exposure(ds, country): # Function with dataset ds, and country to be called.
     ds_c = ds.sel(country=country) # [3] Sel for selecting by label, not by index (e.g Belgium not 2).
     plt.figure(figsize=(8,5))
@@ -73,6 +85,11 @@ def plot_lifetime_exposure(ds, country): # Function with dataset ds, and country
     plt.grid(alpha=0.3)
     plt.show()
 
+'''TASK 8: This function produces a global map of lifetime heatwave exposure for the
+2020 birth cohort under the NDC scenario. It merges country-level exposure data 
+with spatial country geometries to create a colored map, where colors represent 
+the fraction of lifetime exposure. The function also identifies the five most affected 
+countries and Belgium, and annotates them with numerical values and confidence intervals.'''
     
 def plot_lifetime_exposure_map_with_annotations(ds_le):     
     ds_2020 = ds_le.sel(birth_year=2020) # [3] Select birth cohort 2020 in the NDC scenario
@@ -114,6 +131,10 @@ def plot_lifetime_exposure_map_with_annotations(ds_le):
         ax.annotate(label, xy=(x, y), xytext=(x + dx, y + dy), arrowprops=dict(arrowstyle="->", lw=1), bbox=dict(boxstyle="round", fc="white", ec="black"), fontsize=9)
     plt.show()
 
+'''TASK 9: This function compares lifetime heatwave exposure across emission scenarios 
+for individuals born in 2020. It computes the additional number of heatwaves expected 
+under 2 °C and NDC scenarios relative to the 1.5 °C baseline, and visualizes these 
+differences on three global maps.'''
     
 def plot_scenario_difference_maps_2020(ds_le, gdf): # gdf denotes the Geodataframe containing country geometries, which is merged with scenario-based exposure differences to enable spatial visualization
     ds_2020 = ds_le.sel(birth_year=2020) # [3] Selection of birth cohort 2020
@@ -138,6 +159,11 @@ def plot_scenario_difference_maps_2020(ds_le, gdf): # gdf denotes the Geodatafra
     plt.suptitle("Additional lifetime heatwaves for birth cohort 2020\nDifferences between emission scenarios", fontsize=14)
     plt.show()
 
+'''TASK 10: This function ranks countries according to their projected lifetime heatwave 
+exposure for the 2020 birth cohort under the NDC scenario. It converts the exposure 
+data into a table, selects the ten countries with the highest values, and displays 
+them in a horizontal bar chart. This representation allows for an intuitive comparison 
+between the most affected countries and complements the spatial maps with a clear ranking.'''
 
 def plot_top10_countries_bar_2020(ds_le):
     ds_2020 = ds_le.sel(birth_year=2020)    # [3] Selection of birth cohort 2020
@@ -156,6 +182,12 @@ def plot_top10_countries_bar_2020(ds_le):
     plt.tight_layout()
     plt.show()
 
+'''TASK 11: This function analyzes intergenerational inequality in heatwave exposure by 
+comparing individuals born in 2020 with those born in 1960 under the NDC scenario. 
+It calculates the difference in lifetime exposure between the two cohorts for each 
+country and maps this difference globally. The resulting visualization highlights how 
+climate change disproportionately increases heatwave exposure for younger generations, 
+emphasizing long-term climate impacts.'''
 
 def plot_generational_difference_map(ds_le, gdf):
     ds_2020 = ds_le.sel(birth_year=2020) # [3] To select thee data for the year we wan
