@@ -19,10 +19,15 @@ Data input: The data input will include land surface or land cover fractions and
 
 It’s necessary to create an environment and to install the following packages. The Python packages that are required are as follows:
   • pandas: 1.4.2
+  
   • numpy: 1.22.4
+
   • scipy: 1.8.1
+  
   • matplotlib: 3.5.3
+  
   •	xarray: 2022.6.0
+  
   •	geopandas: 0.12.2
 
 *1.4 Structure of the notebook*
