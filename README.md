@@ -1,4 +1,5 @@
-README 
+**Project 8 Introduction and Explanation**
+
 **1.	Jupyter Notebook: land_fraction_and_lifetime_exposure.ipynb**
 
 *1.1 Course Context*
@@ -17,18 +18,12 @@ Data input: The data input will include land surface or land cover fractions and
 *1.3 Requirements*
 
 It’s necessary to create an environment and to install the following packages. The Python packages that are required are as follows:
-
-•	pandas: 1.4.2
-
-•	numpy: 1.22.4
-
-•	scipy: 1.8.1
-
-•	matplotlib: 3.5.3
-
-•	xarray: 2022.6.0
-
-•	geopandas: 0.12.2
+  • pandas: 1.4.2
+  • numpy: 1.22.4
+  • scipy: 1.8.1
+  • matplotlib: 3.5.3
+  •	xarray: 2022.6.0
+  •	geopandas: 0.12.2
 
 *1.4 Structure of the notebook*
 
@@ -69,32 +64,19 @@ conda create -n spyder_env python=3.10 spyder=5.5 spyder-kernels=2.5 -y
 2.2.5 Installing Required Libraries
 
 All scientific libraries were installed using conda-forge to ensure compatibility on Windows.
-
-conda install -c conda-forge numpy=1.22.4
-
-conda install -c conda-forge pandas=1.4.2
-
-conda install -c conda-forge scipy=1.8.1
-
-conda install -c conda-forge matplotlib=3.5.3
-
-OR
-
-conda install -c conda-forge matplotlib=3.8
-
-conda install -c conda-forge xarray=2022.6.0
-
-conda install -c conda-forge geopandas=0.12.2
-
-Matplotlib 3.5.3 was used for compatibility with legacy code, while Matplotlib 3.8 can be used when only public APIs are employed.
+  conda install -c conda-forge numpy=1.22.4
+  conda install -c conda-forge pandas=1.4.2
+  conda install -c conda-forge scipy=1.8.1
+  conda install -c conda-forge matplotlib=3.5.3
+  OR
+  conda install -c conda-forge matplotlib=3.8
+  conda install -c conda-forge xarray=2022.6.0
+  conda install -c conda-forge geopandas=0.12.2
 
 2.2.6 Launching Spyder
 
 Spyder is launched from its dedicated environment using:
-
-conda activate spyder_env
-
-spyder
+  conda activate spyder_env
 
 2.2.7 Final State
 
