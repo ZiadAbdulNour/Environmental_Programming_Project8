@@ -70,12 +70,18 @@ conda create -n spyder_env python=3.10 spyder=5.5 spyder-kernels=2.5 -y
 
 All scientific libraries were installed using conda-forge to ensure compatibility on Windows.
   conda install -c conda-forge numpy=1.22.4
+  
   conda install -c conda-forge pandas=1.4.2
+  
   conda install -c conda-forge scipy=1.8.1
+  
   conda install -c conda-forge matplotlib=3.5.3
+  
   OR
   conda install -c conda-forge matplotlib=3.8
+  
   conda install -c conda-forge xarray=2022.6.0
+  
   conda install -c conda-forge geopandas=0.12.2
 
 2.2.6 Launching Spyder
